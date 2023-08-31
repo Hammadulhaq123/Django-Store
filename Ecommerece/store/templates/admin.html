@@ -1,6 +1,139 @@
 {% extends "base.html" %}
 {%block body%}
-<h1 class="text-3xl font-bold underline">
-    Admin
-</h1>
+<main class="bg-gray-900 p-8 relative">
+
+
+
+    <div class="flex flex-wrap bg-gray-800 w-full rounded-lg p-4">
+
+        <form class="w-full p-8" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <h2 class="text-white text-3xl font-bold mb-4">Add Product</h2>
+            <div class="relative z-0 w-full mb-6 group">
+                <input type="text" name="title"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="title"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product
+                    Title</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <input type="text" name="tag"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " />
+                <label for="tag"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product
+                    Tag (optional)</label>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="number" name="rating"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " />
+                    <label for="rating"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product
+                        Ratings</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="number" name="price"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="price"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Price</label>
+                </div>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload
+                    file</label>
+                <input
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer dark:text-gray-400 focus:outline-none bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    aria-describedby="image_help" name="image" id="image" type="file">
+
+            </div>
+
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                Product</button>
+        </form>
+
+    </div>
+
+    <form class="mt-8 rounded-none">
+        <label for="default-search"
+            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </div>
+            <input type="search" id="default-search" name="search"
+                class="block w-full p-4 pl-10 text-sm text-gray-900 border-none outline-none rounded-t-lg bg-gray-50  dark:bg-gray-800  dark:placeholder-gray-400 dark:text-white"
+                placeholder="Search Products...">
+            <button type="submit"
+                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+        </div>
+    </form>
+
+    <div class="relative overflow-x-auto mb-4 rounded-b-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Product Title
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Product Tag
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Product Ratings
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Product Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Functions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in items%}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.title}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{item.tag}}
+                    </td>
+                    <td class="px-6 py-4 flex gap-1">
+                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        {{item.rating}}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${{item.price}}
+                    </td>
+                    <td class="px-6 py-4 flex gap-1">
+                        <a href="/store/delete_item/{{item.id}}"
+                            class="w-8 h-8 rounded-full flex bg-red-600 text-white items-center justify-center">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                        <a href="/store/update_item/{{item.id}}"
+                            class="w-8 h-8 rounded-full flex bg-blue-600 text-white items-center justify-center">
+                            <i class="fa-solid fa-wrench"></i>
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</main>
 {%endblock%}
